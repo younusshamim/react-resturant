@@ -1,13 +1,12 @@
-import react, { Component } from 'react';
+import React from 'react';
 
-let About = () => {
+const About = () => {
     document.title = "About";
-
     return (
         <div>
 
-        </div >
-    )
+        </div>
+    );
 }
 
 export default About;

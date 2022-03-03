@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import DISHES from '../../data/dishes';
-// import COMMENTS from '../../data/comments';
 import MenuItem from './MenuItem';
 import DishDetail from './DishDetail';
 import { CardColumns, Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
@@ -14,6 +12,7 @@ const mapStateToProps = state => {
         comments: state.comments
     }
 }
+
 const mapDispatchToProps = dispatch => {
     return {
         addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
@@ -21,22 +20,17 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-
 class Menu extends Component {
     state = {
-        // dishes: DISHES,
         selectedDish: null,
-        // comments: COMMENTS,
         modalOpen: false
     }
 
     onDishSelect = dish => {
-        // console.log(dish);
         this.setState({
             selectedDish: dish,
             modalOpen: !this.state.modalOpen
-        })
-        // this.toggleModal();
+        });
     }
 
     toggleModal = () => {
@@ -55,10 +49,9 @@ class Menu extends Component {
         if (this.props.dishes.isLoading) {
             return (
                 <Loading />
-            )
+            );
         }
         else {
-            // const menu = this.props.dishes.map(item => {
             const menu = this.props.dishes.dishes.map(item => {
                 return (
                     <MenuItem
@@ -71,36 +64,33 @@ class Menu extends Component {
 
             let dishDetail = null;
             if (this.state.selectedDish != null) {
-                const comments = this.props.comments.filter(comment => {
-                    return comment.dishId === this.state.selectedDish.id;
-                })
+                const comments = this.props.comments.filter(comment => comment.dishId === this.state.selectedDish.id
+                )
                 dishDetail = <DishDetail
                     dish={this.state.selectedDish}
                     comments={comments}
-                    addComment={this.props.addComment}
-                />
+                    addComment={this.props.addComment} />
             }
-
             return (
                 <div className="container">
                     <div className="row">
                         <CardColumns>
                             {menu}
                         </CardColumns>
-
                         <Modal isOpen={this.state.modalOpen}>
                             <ModalBody>
                                 {dishDetail}
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="secondary" onClick={this.toggleModal}>Close</Button>
+                                <Button color="secondary" onClick={this.toggleModal}>
+                                    Close
+                                </Button>
                             </ModalFooter>
                         </Modal>
                     </div>
                 </div>
-            )
+            );
         }
-
 
     }
 }

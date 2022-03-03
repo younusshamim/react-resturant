@@ -1,21 +1,28 @@
 import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardBody, CardTitle } from 'reactstrap';
-import DishDetail from './DishDetail'
 
 const MenuItem = props => {
-    // console.log(props);
     return (
         <div>
-            <Card>
+            <Card style={{ margin: "10px" }}>
                 <CardBody>
-                    <CardImg src={props.dish.image} width="100%" alt={props.dish.name} style={{ opacity: "0.5" }} />
+                    <CardImg
+                        width="100%"
+                        alt={props.dish.name}
+                        src={props.dish.image}
+                        style={{ opacity: "0.5" }} />
                     <CardImgOverlay>
-                        <CardTitle style={{ cursor: "pointer" }} onClick={props.DishSelect}> {props.dish.name} </CardTitle>
+                        <CardTitle
+                            style={{ cursor: "pointer" }}
+                            onClick={props.DishSelect}
+                        >
+                            {props.dish.name}
+                        </CardTitle>
                     </CardImgOverlay>
                 </CardBody>
             </Card>
         </div>
-    )
+    );
 }
 
 export default MenuItem;

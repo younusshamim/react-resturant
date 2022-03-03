@@ -15,18 +15,15 @@ class Navigation extends Component {
             isNavOpen: !this.state.isNavOpen
         })
     }
-
     render() {
         return (
             <div>
                 <Navbar dark color="dark" expand="sm">
                     <div className="container">
                         <NavbarToggler onClick={this.navToggle} />
-
                         <NavbarBrand href="/">Bohubrihi Restaurant</NavbarBrand>
-
-                        <Collapse navbar isOpen={this.state.isNavOpen}>
-                            <Nav className="ml-auto" navbar>
+                        <Collapse isOpen={this.state.isNavOpen} navbar>
+                            <Nav className="mr-auto" navbar>
                                 <NavItem>
                                     <Link to="/" className="nav-link active">Home</Link>
                                 </NavItem>
@@ -44,9 +41,8 @@ class Navigation extends Component {
                     </div>
                 </Navbar>
             </div>
-        )
+        );
     }
-
 }
 
 export default Navigation;
