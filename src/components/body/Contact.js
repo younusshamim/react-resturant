@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import react, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 
 class Contact extends Component {
@@ -16,6 +16,7 @@ class Contact extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
@@ -29,8 +30,9 @@ class Contact extends Component {
         event.preventDefault();
     }
 
-
     render() {
+        document.title = "Contact";
+
         return (
             <div className="container">
                 <div className="row row-content" style={{ paddingLeft: "20px", textAlign: "left" }}>
@@ -69,23 +71,23 @@ class Contact extends Component {
                             </FormGroup>
 
 
-                            <FormGroup row>
-                                <Col md={{ size: 6, offset: 2 }}>
-                                    <FormGroup check>
-                                        <Label check>
-                                            <Input type="checkbox" name="agree" checked={this.state.agree} onChange={this.handleInputChange} />
-                                            <strong>May we contact you?</strong>
-                                        </Label>
-                                    </FormGroup>
-                                </Col>
+                        <FormGroup row>
+                            <Col md={{ size: 6, offset: 2 }}>
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input type="checkbox" name="agree" checked={this.state.agree} onChange={this.handleInputChange} />
+                                        <strong>May we contact you?</strong>
+                                    </Label>
+                                </FormGroup>
+                            </Col>
 
-                                <Col md={{ size: 3, offset: 1 }}>
-                                    <Input type="select" name="contactType" value={this.state.contactType} onChange={this.handleInputChange}>
-                                        <option>Tel.</option>
-                                        <option>Email</option>
-                                    </Input>
-                                </Col>
-                            </FormGroup>
+                            <Col md={{ size: 3, offset: 1 }}>
+                                <Input type="select" name="contactType" value={this.state.contactType} onChange={this.handleInputChange}>
+                                    <option>Tel.</option>
+                                    <option>Email</option>
+                                </Input>
+                            </Col>
+                        </FormGroup>
 
 
                             <FormGroup row>
